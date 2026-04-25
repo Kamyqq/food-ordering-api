@@ -1,0 +1,54 @@
+### view all dishes
+GET {{ baseUrl }}/dishes
+Content-Type: application/json
+Accept: application/json
+
+### create new dish
+POST {{ baseUrl }}/dishes
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ adminToken }}
+
+{
+    "name": "Pepperoni",
+    "description": "Skladniki: pepperoni, ser",
+    "price": 3900,
+    "is_available": true
+}
+
+### update dish
+PUT {{ baseUrl }}/dishes/2
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ adminToken }}
+
+{
+    "name": "Pepperoni",
+    "description": "Skladniki: ser",
+    "price": 3900,
+    "is_available": true
+}
+
+### delete dish
+DELETE {{ baseUrl }}/dishes/2
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ adminToken }}
+
+### see soft deleted dishes
+GET {{ baseUrl }}/dishes/deleted
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ adminToken }}
+
+### restore deleted dish
+POST {{ baseUrl }}/dishes/1/restore
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ adminToken }}
+
+### change dish availability
+POST {{ baseUrl }}/dishes/1/availability
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ chefToken }}

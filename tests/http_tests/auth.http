@@ -1,0 +1,29 @@
+### register account
+POST {{ baseUrl }}/backend/register
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ adminToken }}
+
+{
+    "name": "Tomasz Problem",
+    "email": "worker1@mail.com",
+    "role": "chef",
+    "password": "test1234",
+    "password_confirmation": "test1234"
+}
+
+### login account
+POST {{ baseUrl }}/backend/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "worker@mail.com",
+    "password": "test1234"
+}
+
+### logout chef
+POST {{ baseUrl }}/backend/logout
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ chefToken }}

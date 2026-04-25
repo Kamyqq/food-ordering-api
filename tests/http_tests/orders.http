@@ -1,0 +1,60 @@
+### order food
+POST {{ baseUrl }}/orders
+Content-Type: application/json
+Accept: application/json
+
+{
+    "client_mail": "example@test.com",
+    "client_phone": "123 456 789",
+    "client_address": "Random place",
+    "items": [
+        {
+            "dish_id": 1,
+            "quantity": 2
+        }
+    ]
+}
+
+### get orders as a chef
+GET {{ baseUrl }}/dishes/ordered
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ chefToken }}
+
+### get orders as delivery
+GET {{ baseUrl }}/dishes/ordered
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ deliveryToken }}
+
+### get orders as admin
+GET {{ baseUrl }}/dishes/ordered
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ adminToken }}
+
+### update order as a chef
+PATCH {{ baseUrl }}/orders/2/status
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ chefToken }}
+
+{
+    "status": "ready"
+}
+
+### update order as a delivery
+PATCH {{ baseUrl }}/orders/2/status
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ deliveryToken }}
+
+{
+    "status": "delivered"
+}
+
+### cancel order as admin
+POST {{ baseUrl }}/orders/4/cancel
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{ adminToken }}
